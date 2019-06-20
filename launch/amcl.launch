@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="output" default="screen"/>
+    <arg name="sim" default="true"/>
+    <arg name="gui" default="false"/>
+
+    <arg name="map_base_name" default="current"/>
+
+
+
+    <!-- Initialize Simulation Map -->
+    <group if="$(arg sim)">
+
+        <arg name="map_file" default="$(find navigation_exercise)/map/test_world_map.yaml"/>
+        <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" output="screen">
+            <param name="frame_id" value="map"/>
+        </node>
+
+    </group>
+
+
+    <!-- run amcl_scan_remapper -->
+    <node pkg="imes_navigation" type="amcl_scan_remapper" name="amcl_scan_remapper" output="$(arg output)"/>
+
+    <!--- Run AMCL -->
+    <node pkg="amcl" type="amcl" name="amcl" output="$(arg output)">
+        <remap from="/scan" to="/scan_combined"/>
+        <rosparam file="$(find luh_navigation_launcher)/config/amcl_params.yaml" command="load" />
+    </node>
+
+
+</launch>

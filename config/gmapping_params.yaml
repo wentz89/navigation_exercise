@@ -1,0 +1,38 @@
+throttle_scans: 2 # Process 1 out of every this many scans (set it to a higher number to skip more scans) 
+base_frame: /base_link
+map_frame: /map
+odom_frame: /odom
+map_update_interval: 2.0 # (Default: 5.0) Lowering this number updates the occupancy grid more often, at the expense of greater computational load.
+maxUrange: 3.0 # (Default 80) The maximum usable range of the laser. A beam is cropped to this value.
+sigma: 0.05 # The sigma used by the greedy endpoint matching
+kernelSize: 1 # The kernel in which to look for a correspondence 
+lstep: 0.05 # The optimization step in translation
+astep: 0.05 # The optimization step in rotation 
+iterations: 5 # (Default 5) The number of iterations of the scanmatcher 
+lsigma: 0.075 # The sigma of a beam used for likelihood computation 
+ogain: 3.0 # Gain to be used while evaluating the likelihood, for smoothing the resampling effects
+lskip: 1 # Number of beams to skip in each scan. (0 = take all rays) 
+srr: 0.1 # Odometry error in translation as a function of translation (rho/rho)
+srt: 0.2 # Odometry error in translation as a function of rotation (rho/theta) 
+str: 0.1 # Odometry error in rotation as a function of translation (theta/rho) 
+stt: 0.2 # Odometry error in rotation as a function of rotation (theta/theta) 
+linearUpdate: 0.2 # (Default 1.0) Process a scan each time the robot translates this far 
+angularUpdate: 0.15 # (Default 0.5) Process a scan each time the robot rotates this far 
+temporalUpdate: -1.0 # (Default -1 = off) update time intervall if no update is triggered
+resampleThreshold: 0.5 # The Neff based resampling threshold 
+particles: 10 # Number of particles in the filter 
+xmin: -7.0 # Initial map size (in metres) 
+ymin: -2.0 # Initial map size (in metres) 
+xmax: 2.0 # Initial map size (in metres)
+ymax: 9.0 # Initial map size (in metres) 
+delta: 0.05 # Resolution of the map (in metres per occupancy grid block) 
+llsamplerange: 0.01 # Translational sampling range for the likelihood
+llsamplestep: 0.01 # Translational sampling step for the likelihood
+lasamplerange: 0.005 # Angular sampling range for the likelihood 
+lasamplestep: 0.005 # Angular sampling step for the likelihood
+transform_publish_period: 0.05 #How long (in seconds) between transform publications.
+occ_thresh: 0.25 # Threshold on gmapping's occupancy values. Cells with greater occupancy are considered occupied
+scan_topic: scan
+num_lasers: 2
+
+maxRange: 5.0 # The maximum range of the sensor. If regions with no obstacles within the range of the sensor should appear as free space in the map, set maxUrange < maximum range of the real sensor <= maxRange.

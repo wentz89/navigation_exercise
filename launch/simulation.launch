@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<launch>
+
+    <arg name="output" default="screen"/>
+    <arg name="sim" default="true"/>
+    <arg name="gui" default="true"/>
+
+    <include file="$(find navigation_exercise)/launch/youbot.launch"/>
+    <include file="$(find navigation_exercise)/launch/gazebo_controller.launch"/>
+
+</launch>
