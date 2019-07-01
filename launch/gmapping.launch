@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <node pkg="navigation_exercise" type="scan_remapper" name="scan_remapper"/>
-    <node pkg="luh_gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
         <rosparam file="$(find navigation_exercise)/config/gmapping_params.yaml" command="load" />
     </node>
 </launch>
