@@ -26,7 +26,7 @@
     <!--- Run AMCL -->
     <node pkg="amcl" type="amcl" name="amcl" output="$(arg output)">
         <remap from="/scan" to="/scan_combined"/>
-        <rosparam file="$(find luh_navigation_launcher)/config/amcl_params.yaml" command="load" />
+        <rosparam file="$(find navigation_exercise)/config/amcl_params.yaml" command="load" />
     </node>
 
 
